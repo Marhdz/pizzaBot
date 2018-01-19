@@ -34,7 +34,6 @@ server.post('/lista-orden', function (req, res) {
           type:0,
           speech:x.compra}
       })
-console.log(listaPedidos);
       res.json({
         speech: '',
         messages: listaPedidos,
