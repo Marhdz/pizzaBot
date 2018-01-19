@@ -32,7 +32,7 @@ server.post('/lista-orden', function (req, res) {
                 {
                   type: 2,
                   platform: "facebook",
-                  title: "",
+                  title: " ",
                   replies: [
                     'Ver compra',
                     'Volver al menú',
@@ -41,7 +41,7 @@ server.post('/lista-orden', function (req, res) {
                 },
                 {
                   type: 0,
-                  speech: ""
+                  speech: " "
                 }
               ]
               // speech: 'Excelente! tu orden ha sido añadida '+id,
@@ -58,12 +58,14 @@ server.post('/lista-orden', function (req, res) {
           platform: 'facebook',
           speech:x.compra}
       })
-      res.json({
+    return  res.json({
         speech: '',
         messages: listaPedidos,
         source: 'first-webhook'
       });
-      return listaPedidos;
+
+      //return listaPedidos;
+
     };
 });
 
