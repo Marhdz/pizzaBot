@@ -1,6 +1,6 @@
 const express   = require('express');
 const bodyParser= require('body-parser');
-const request   = require('request');
+//const request = require('request-promise');
 const fs = require('fs');
 
 const orden=require('./orden.js')
@@ -14,7 +14,8 @@ server.use(bodyParser.json());
 
 server.post('/lista-orden', function (req, res) {
     var compra=req.body.result && req.body.result.parameters && req.body.result.parameters.Compra;
-    var id=req.body.sessionId;
+    let id=req.body.sessionId;
+    console.log(id);
     var action=req.body.result.action;
     var pedido=[];
 
