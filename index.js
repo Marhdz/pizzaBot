@@ -32,16 +32,12 @@ server.post('/lista-orden', function (req, res) {
                 {
                   type: 2,
                   platform: "facebook",
-                  title: " ",
+                  title: "Qué deseas hacer? ",
                   replies: [
                     'Ver compra',
                     'Volver al menú',
                     'Finalizar compra'
                   ]
-                },
-                {
-                  type: 0,
-                  speech: " "
                 }
               ]
               // speech: 'Excelente! tu orden ha sido añadida '+id,
