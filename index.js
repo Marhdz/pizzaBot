@@ -22,6 +22,7 @@ server.post('/lista-orden', function (req, res) {
       var addOrden=orden.agregarOrden(id,compra);
       return  res.json({
                       speech: 'Se ha agregado '+ compra,
+                      platform: 'facebook',
                       displayText: 'Se ha agregado '+ compra,
                       source: 'first-webhook'
                   });
@@ -32,6 +33,7 @@ server.post('/lista-orden', function (req, res) {
       listaPedidos= lista.map((x)=>{
         return {
           type:0,
+          platform: 'facebook',
           speech:x.compra}
       })
       res.json({
