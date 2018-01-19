@@ -22,28 +22,31 @@ server.post('/lista-orden', function (req, res) {
     if(action==='AgregarCompra'){
       var addOrden=orden.agregarOrden(id,compra);
       return  res.json({
-              speech: "",
-              messages: [
-                {
-                  type: 0,
-                  platform: "facebook",
-                  speech: "Excelente! Tu orden ha sido añadida a la compra"
-                },
-                {
-                  type: 2,
-                  platform: "facebook",
-                  title: "",
-                  replies: [
-                    'Ver compra',
-                    'Volver al menú',
-                    'Finalizar compra'
-                  ]
-                },
-                {
-                  type: 0,
-                  speech: ""
-                }
-              ]
+              // speech: "",
+              // messages: [
+              //   {
+              //     type: 0,
+              //     platform: "facebook",
+              //     speech: "Excelente! Tu orden ha sido añadida a la compra"
+              //   },
+              //   {
+              //     type: 2,
+              //     platform: "facebook",
+              //     title: "",
+              //     replies: [
+              //       'Ver compra',
+              //       'Volver al menú',
+              //       'Finalizar compra'
+              //     ]
+              //   },
+              //   {
+              //     type: 0,
+              //     speech: ""
+              //   }
+              // ]
+              speech: 'Excelente! tu orden ha sido añadida '+id,
+              displayText: 'Excelente! tu orden ha sido añadida '+id,
+              source: 'first-webhook'
             });
     };
 
