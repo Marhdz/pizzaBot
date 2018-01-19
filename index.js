@@ -1,8 +1,9 @@
 const express   = require('express');
 const bodyParser= require('body-parser');
-//const http      = require('http');
-//const https     = require('https');
 const request   = require('request');
+const fs = require('fs');
+
+const orden=require('./orden.js')
 
 const server = express();
 server.use(bodyParser.urlencoded({
@@ -12,24 +13,34 @@ server.use(bodyParser.urlencoded({
 server.use(bodyParser.json());
 
 server.post('/lista-orden', function (req, res) {
+    var compra=req.body.result && req.body.result.parameters && req.body.result.parameters.Compra;
+    var id=req.body.sessionId;
     var action=req.body.result.action;
     var pedido=[];
+
     if(action==='AgregarCompra'){
-      let compra=req.body.result && req.body.result.parameters && req.body.result.parameters.Compra;
-      pedido.push(compra);
+      var addOrden=orden.agregarOrden(id,compra);
       return  res.json({
-                      speech: pedido,
-                      displayText: pedido,
+                      speech: 'Se ha agregado '+ compra,
+                      displayText: 'Se ha agregado '+ compra,
                       source: 'first-webhook'
                   });
     };
 
     if(action==='VerCompra'){
-      return res.json({
-                      speech: pedido,
-                      displayText: pedido,
-                      source: 'first-webhook'
-                  });
+      var lista=orden.leerOrden(id);
+      listaPedidos= lista.map((x)=>{
+        return {
+          type:0,
+          speech:x.compra}
+      })
+console.log(listaPedidos);
+      res.json({
+        speech: '',
+        messages: listaPedidos,
+        source: 'first-webhook'
+      });
+      return listaPedidos;
     };
 });
 
