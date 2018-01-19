@@ -25,7 +25,7 @@ server.post('/lista-orden', function (req, res) {
               messages: [
                 {
                   type: 0,
-                  "platform": "facebook",
+                  platform: "facebook",
                   speech: "Excelente! Tu orden ha sido añadida a la compra"
                 },
                 {
