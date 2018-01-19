@@ -33,9 +33,9 @@ server.post('/lista-orden', function (req, res) {
                   platform: "facebook",
                   title: "",
                   replies: [
-                    Ver compra,
-                    Volver al menú,
-                    Finalizar compra
+                    'Ver compra',
+                    'Volver al menú',
+                    'Finalizar compra'
                   ]
                 },
                 {
