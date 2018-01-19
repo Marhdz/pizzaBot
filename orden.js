@@ -22,7 +22,6 @@ var agregarOrden = (id,compra) => {
   };
     orden.push(ordenActual);
     guardarOrden(id,orden);
-  //  return ordenActual;
 };
 
 var leerOrden = (id) => {

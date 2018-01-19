@@ -21,9 +21,12 @@ server.post('/lista-orden', function (req, res) {
     if(action==='AgregarCompra'){
       var addOrden=orden.agregarOrden(id,compra);
       return  res.json({
+                      speech:'',
+                      messages:{
                       type:0,
                       platform: 'facebook',
-                      speech: 'Excelente! tu orden ha sido añadida a la compra ',
+                      speech: 'Excelente! tu orden ha sido añadida a la compra '
+                    },
                       source: 'first-webhook'
                   });
     };
