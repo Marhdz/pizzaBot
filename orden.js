@@ -26,16 +26,27 @@ var agregarOrden = (id,compra) => {
 
 var leerOrden = (id) => {
   var orden = fetchOrder(id);
-  var ordenId = orden.filter((id)=>{
-     orden.id=id
-   });
+  var ordenId = orden.filter((id)=>
+     orden.id===id
+   );
   return orden;
 };
 
-//var borrarOrden = (id)
+var borrarTodo = (id) => {
+  var orden= fetchOrder(id);
+  var borrarId= orden.filter((id) => orden.id !== id);
+  guardarOrden(borrarId);
+};
 
+var borrarCompra = (id,compra) => {
+  var orden= fetchOrder(id);
+  var borrarId= orden.filter((compra) => orden.compra !== id);
+  guardarOrden(borrarId);
+};
 
 module.exports = {
   agregarOrden,
-  leerOrden
+  leerOrden,
+  borrarTodo,
+  borrarCompra
 };

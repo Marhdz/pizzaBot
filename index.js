@@ -48,6 +48,7 @@ server.post('/lista-orden', function (req, res) {
 
     if(action==='VerCompra'){
       var lista=orden.leerOrden(id);
+      console.log(lista);
       listaPedidos= lista.map((x)=>{
         return {
           type:0,
@@ -62,6 +63,44 @@ server.post('/lista-orden', function (req, res) {
 
       //return listaPedidos;
 
+    };
+
+    if (action==='EliminarOrden'){
+      var nuevaOrden=orden.borrarCompra(id,compra);
+      return  res.json({
+              speech: "",
+              messages: [
+                {
+                  type: 0,
+                  platform: "facebook",
+                  speech: "La orden ha sido eliminada de la compra"
+                },
+                {
+                  type: 2,
+                  platform: "facebook",
+                  title: "Qué deseas hacer? ",
+                  replies: [
+                    'Ver compra',
+                    'Volver al menú',
+                    'Finalizar compra'
+                  ]
+                }
+              ]
+            });
+    };
+
+    if (action==='FinalizarCompra'){
+      var nuevaOrden=orden.borrarTodo(id);
+      return  res.json({
+              speech: "",
+              messages: [
+                {
+                  type: 0,
+                  platform: "facebook",
+                  speech: "Perfecto! Tu orden va en camino..."
+                }
+              ]
+            });
     };
 });
 
