@@ -69,14 +69,18 @@ server.post('/lista-orden', function (req, res) {
           return {
             type:1,
             platform: 'facebook',
+            title :x.producto,
+            subtitle: '',
             imageUrl: 'https://i.imgur.com/VUEGlFp.jpg',
-            title :x.producto
+            buttons:[{
+              text: 'Borrar '+x.producto,
+              postback:''
+            }]
           }
         });
       return  res.json({
           speech: '',
-          messages: listaPedidos,
-          source: 'first-webhook'
+          messages: listaPedidos
         });
 
       }, (e) => {
