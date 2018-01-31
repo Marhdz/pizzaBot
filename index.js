@@ -20,6 +20,7 @@ server.use(bodyParser.json());
 
 server.post('/lista-orden', function (req, res) {
     var action=req.body.result.action;
+    var Id=req.body.sessionId;
     // var pedido=[];
     var orden = new Orden({
       UserId: req.body.sessionId,
@@ -63,7 +64,7 @@ server.post('/lista-orden', function (req, res) {
     };
 
     if(action==='VerCompra'){
-      Orden.find({'confirmado':false},function(e,docs){
+      Orden.find({'confirmado':false,'UserId':Id},function(e,docs){
         listaPedidos= docs.map((x)=>{
           return {
             type:1,
