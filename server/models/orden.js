@@ -17,10 +17,6 @@ var Orden = mongoose.model('Orden', {
   confirmado: {
     type: Boolean,
     default: false
-  },
-  enviado: {
-    type: Boolean,
-    default: false
   }
 });
 
