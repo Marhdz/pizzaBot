@@ -80,19 +80,31 @@ server.post('/lista-orden', function (req, res) {
               }]
             }
         });
+
+        var listaPrecios=docs.map((x)=>{
+          precios=parseFloat(productos[x.producto].precio);
+          return precios
+        });
+        var total=0;
+        for(var i in listaPrecios) { total += listaPrecios[i];}
+
+
+        listaPedidos.push({
+          type: 0,
+          platform: "facebook",
+          speech: "Total: $"+total},
+          {
+            type: 2,
+            platform: "facebook",
+            title: "Qué deseas hacer? ",
+            replies: [
+              'Volver al menú',
+              'Finalizar compra'
+            ]
+          });
       return  res.json({
           speech: '',
-          messages: listaPedidos  
-          // + {
-          //   type: 2,
-          //   platform: "facebook",
-          //   title: "Qué deseas hacer? ",
-          //   replies: [
-          //     'Ver compra',
-          //     'Volver al menú',
-          //     'Finalizar compra'
-          //   ]
-          // }
+          messages: listaPedidos
         });
 
       }, (e) => {
@@ -100,7 +112,7 @@ server.post('/lista-orden', function (req, res) {
       });
     };
 
-    if (action==='EliminarOrden'){
+    if (action==='Borrar'){
       var nuevaOrden=orden.borrarCompra(id,compra);
       return  res.json({
               speech: "",
