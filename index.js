@@ -5,6 +5,7 @@ var {ObjectID} = require('mongodb');
 
 var {mongoose} = require('./server/db/mongoose');
 var {Orden} = require('./server/models/orden');
+var productos = require('./server/models/productos.json');
 
 //var app = express();
 //const port = process.env.PORT || 3000;
@@ -66,21 +67,32 @@ server.post('/lista-orden', function (req, res) {
     if(action==='VerCompra'){
       Orden.find({'confirmado':false,'UserId':Id},function(e,docs){
         listaPedidos= docs.map((x)=>{
-          return {
-            type:1,
-            platform: 'facebook',
-            title :x.producto,
-            subtitle: '',
-            imageUrl: 'https://i.imgur.com/VUEGlFp.jpg',
-            buttons:[{
-              text: 'Borrar '+x.producto,
-              postback:''
-            }]
-          }
+          var nombre=x.producto;
+            return {
+              type:1,
+              platform: 'facebook',
+              title :nombre+' ($'+productos[nombre].precio+')',
+              subtitle: productos[nombre].descripcion,
+              imageUrl: productos[nombre].url,
+              buttons:[{
+                text: 'Borrar '+x.producto,
+                postback:''
+              }]
+            }
         });
       return  res.json({
           speech: '',
-          messages: listaPedidos
+          messages: listaPedidos  
+          // + {
+          //   type: 2,
+          //   platform: "facebook",
+          //   title: "Qué deseas hacer? ",
+          //   replies: [
+          //     'Ver compra',
+          //     'Volver al menú',
+          //     'Finalizar compra'
+          //   ]
+          // }
         });
 
       }, (e) => {

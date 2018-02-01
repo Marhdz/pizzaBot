@@ -1,0 +1,32 @@
+{
+	"Oferta1": {
+		"descripcion": "Oferta1",
+    "url":"https://i.imgur.com/su2rD4v.jpg",
+    "precio":6.99
+	},
+	"Oferta2": {
+		"descripcion": "Oferta2",
+    "url":"https://i.imgur.com/b9zDbyb.jpg",
+    "precio":9.99
+	},
+  "Oferta3": {
+		"descripcion": "Oferta3",
+    "url":"https://i.imgur.com/HIqHMi6.jpg",
+    "precio":12.89
+	},
+  "Oferta4": {
+		"descripcion": "Oferta4",
+    "url":"https://i.imgur.com/vA6PjoB.jpg",
+    "precio":6.99
+	},
+  "Oferta5": {
+		"descripcion": "Oferta5",
+    "url":"https://i.imgur.com/PGJyCZQ.jpg",
+    "precio":9.99
+	},
+  "Oferta6": {
+		"descripcion": "Oferta6",
+    "url":"https://i.imgur.com/AnhBDUU.jpg",
+    "precio":18.99
+	}
+}
