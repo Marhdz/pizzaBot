@@ -81,10 +81,7 @@ server.post('/lista-orden', function (req, res) {
             }
         });
 
-        var listaPrecios=docs.map((x)=>{
-          precios=parseFloat(productos[x.producto].precio);
-          return precios
-        });
+        var listaPrecios=docs.map((x)=>{return parseFloat(productos[x.producto].precio);});
         var total=0;
         for(var i in listaPrecios) { total += listaPrecios[i];}
 
@@ -92,7 +89,7 @@ server.post('/lista-orden', function (req, res) {
         listaPedidos.push({
           type: 0,
           platform: "facebook",
-          speech: "Total: $"+total},
+          speech: "Total: $"+total.toFixed(2)},
           {
             type: 2,
             platform: "facebook",
