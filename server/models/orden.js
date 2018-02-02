@@ -11,9 +11,9 @@ var Orden = mongoose.model('Orden', {
     type: String,
     required:true
   },
-  precio:{
-    type: Number
-  },
+  // precio:{
+  //   type: Number
+  // },
   confirmado: {
     type: Boolean,
     default: false

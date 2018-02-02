@@ -26,7 +26,7 @@ server.post('/lista-orden', function (req, res) {
     var orden = new Orden({
       UserId: req.body.sessionId,
       producto: req.body.result.parameters.Compra,
-      precio: req.body.result.parameters.Precio
+       // precio:
        // confirmado:
        // enviado:
     });
@@ -71,7 +71,7 @@ server.post('/lista-orden', function (req, res) {
             return {
               type:1,
               platform: 'facebook',
-              title :nombre+' ($'+x.precio+')',
+              title :nombre+' ($'+productos[nombre].precio+')',
               subtitle: productos[nombre].descripcion,
               imageUrl: productos[nombre].url,
               buttons:[{
@@ -81,7 +81,7 @@ server.post('/lista-orden', function (req, res) {
             }
         });
 
-        var listaPrecios=docs.map((x)=>{return parseFloat(x.precio);});
+        var listaPrecios=docs.map((x)=>{return parseFloat(productos[x.producto].precio);});
         var total=0;
         for(var i in listaPrecios) { total += listaPrecios[i];}
 
