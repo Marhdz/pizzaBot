@@ -22,5 +22,17 @@
   "Oferta6": {
 		"descripcion": "Oferta6",
     "url":"https://i.imgur.com/AnhBDUU.jpg"
-	}
+	},
+	"Entrada1":{
+		"descripcion": "Entrada1",
+    "url":"https://i.imgur.com/luVrEjh.jpg"
+	},
+	"Entrada2":{
+		"descripcion": "Entrada2",
+    "url":"https://i.imgur.com/KUuRtTc.jpg"
+	},
+	"Especialidad2":{
+		"descripcion": "Especialidad1",
+    "url":"https://i.imgur.com/KUuRtTc.jpg"
+	},
 }
