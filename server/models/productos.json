@@ -13,17 +13,14 @@
 	},
   "Oferta4": {
 		"descripcion": "Oferta4",
-    "url":"https://i.imgur.com/vA6PjoB.jpg",
-    "precio":6.99
+    "url":"https://i.imgur.com/vA6PjoB.jpg"
 	},
   "Oferta5": {
 		"descripcion": "Oferta5",
-    "url":"https://i.imgur.com/PGJyCZQ.jpg",
-    "precio":9.99
+    "url":"https://i.imgur.com/PGJyCZQ.jpg"
 	},
   "Oferta6": {
 		"descripcion": "Oferta6",
-    "url":"https://i.imgur.com/AnhBDUU.jpg",
-    "precio":18.99
+    "url":"https://i.imgur.com/AnhBDUU.jpg"
 	}
 }

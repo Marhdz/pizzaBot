@@ -22,6 +22,7 @@ server.use(bodyParser.json());
 server.post('/lista-orden', function (req, res) {
     var action=req.body.result.action;
     var Id=req.body.sessionId;
+    var prod= req.body.result.parameters.Compra;
     // var pedido=[];
     var orden = new Orden({
       UserId: req.body.sessionId,
@@ -110,7 +111,15 @@ server.post('/lista-orden', function (req, res) {
     };
 
     if (action==='Borrar'){
-      var nuevaOrden=orden.borrarCompra(id,compra);
+      Orden.findOneAndRemove({'producto':prod,'UserId':Id},function(e,docs){
+        Orden.count({'UserId':Id},function(err , count){
+          //var Number = count;
+          console.log( "Number of docs: "+ count );
+          //return count;
+
+        var replies= ['Ver Compra','Volver al menú','Finalizar compra'];
+        if (count===0){replies= ['Volver al menú']};
+
       return  res.json({
               speech: "",
               messages: [
@@ -120,17 +129,20 @@ server.post('/lista-orden', function (req, res) {
                   speech: "La orden ha sido eliminada de la compra"
                 },
                 {
+                  type: 0,
+                  platform: "facebook",
+                  speech: "Queda: " +count + " elementos"
+                },
+                {
                   type: 2,
                   platform: "facebook",
                   title: "Qué deseas hacer? ",
-                  replies: [
-                    'Ver compra',
-                    'Volver al menú',
-                    'Finalizar compra'
-                  ]
+                  replies: replies
                 }
               ]
             });
+            });
+        });
     };
 
     if (action==='FinalizarCompra'){
